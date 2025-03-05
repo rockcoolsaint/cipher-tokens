@@ -7,6 +7,8 @@ import { getDefaultConfig, RainbowKitProvider, midnightTheme, RainbowKitAuthenti
 import { WagmiProvider } from 'wagmi';
 import { arbitrum, base, mainnet, optimism, polygon, sepolia } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { http } from "viem";
+import Tokens from './components/pages/tokens';
 
 
 function App() {
@@ -14,8 +16,17 @@ function App() {
   const config = getDefaultConfig({
     appName: 'RainbowKit demo',
     projectId: 'YOUR_PROJECT_ID',
-    chains: [mainnet, polygon, optimism, arbitrum, base, sepolia],
+    chains: [mainnet, sepolia],
   });
+
+  // const client = createConfig({
+  //   autoConnect: true,
+  //   chains: [mainnet, sepolia],
+  //   transports: {
+  //     [mainnet.id]: http(),
+  //     [sepolia.id]: http(),
+  //   },
+  // });
 
   const queryClient = new QueryClient();
   return (
@@ -30,6 +41,7 @@ function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="staking" element={<Staking />} />
+            <Route path="tokens" element={<Tokens />} />
           </Route>
         </Routes>
       </BrowserRouter>
