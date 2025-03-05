@@ -1,7 +1,7 @@
 import { erc20Abi } from "viem";
 import { readContract, writeContract } from "wagmi/actions";
 
-const CONTRACT_ADDRESS = "0xYourContractAddressHere";
+const CONTRACT_ADDRESS = "0x20d84EEF255ebD60811A67914dc935F0f6F1a64D";
 
 export const getBalance = async (walletAddress) => {
   try {
